@@ -35,23 +35,35 @@ class _Screen2State extends State<Screen2> {
                     obsvalue: false,
                     hinttext: "User name",
                     prefixicon: Icon(Icons.verified_user),
+                    onchangevalue: (value) {
+                      print(value);
+                    },
                   ),
                   Customtextfield(
                     obsvalue: false,
                     hinttext: "Email Id",
                     prefixicon: Icon(Icons.email),
+                    onchangevalue: (value) {
+                      print(value);
+                    },
                   ),
                   Customtextfield(
                     hinttext: "Password",
                     prefixicon: Icon(Icons.lock),
                     obsvalue: true,
                     suffixicon: Icon(Icons.visibility),
+                    onchangevalue: (value) {
+                      print(value);
+                    },
                   ),
                   Customtextfield(
                     hinttext: "Verify password",
                     prefixicon: Icon(Icons.lock),
                     obsvalue: true,
                     suffixicon: Icon(Icons.visibility),
+                    onchangevalue: (value) {
+                      print(value);
+                    },
                   ),
                   ElevatedButton(
                       onPressed: () {

@@ -5,14 +5,20 @@ class Customtextfield extends StatelessWidget {
   Icon prefixicon;
   Icon suffixicon;
   bool obsvalue;
+  Function onchangevalue;
   Customtextfield(
-      {this.obsvalue, this.hinttext, this.prefixicon, this.suffixicon});
+      {this.obsvalue,
+      this.hinttext,
+      this.prefixicon,
+      this.suffixicon,
+      this.onchangevalue});
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.all(10.0),
       child: TextField(
         obscureText: obsvalue,
+        onChanged: onchangevalue,
         decoration: InputDecoration(
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
           disabledBorder: OutlineInputBorder(
@@ -27,4 +33,11 @@ class Customtextfield extends StatelessWidget {
       ),
     );
   }
+}
+
+class Userdetal {
+  String username;
+  String email;
+  String password;
+  Userdetal({this.username, this.email, this.password});
 }

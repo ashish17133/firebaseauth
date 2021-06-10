@@ -6,6 +6,9 @@ import 'modle/model.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
+//create user instance
+Userdetal userdetails = Userdetal();
+
 void main() {
   runApp(MaterialApp(debugShowCheckedModeBanner: false, home: MyApp()));
 }
@@ -47,12 +50,19 @@ class _MyAppState extends State<MyApp> {
                   obsvalue: false,
                   hinttext: "Email id",
                   prefixicon: Icon(Icons.email),
+                  onchangevalue: (value) {
+                    userdetails.email = value;
+                    print(userdetails.email);
+                  },
                 ),
                 Customtextfield(
                   obsvalue: true,
                   hinttext: "Password",
                   suffixicon: Icon(Icons.visibility),
                   prefixicon: Icon(Icons.lock),
+                  onchangevalue: (value) {
+                    print(value);
+                  },
                 ),
                 ElevatedButton(
                     style: ElevatedButton.styleFrom(
