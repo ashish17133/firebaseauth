@@ -3,6 +3,8 @@ import 'package:firebaseauth/screendash.dart';
 import 'package:flutter/material.dart';
 
 import 'modle/model.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 void main() {
   runApp(MaterialApp(debugShowCheckedModeBanner: false, home: MyApp()));

@@ -13,6 +13,7 @@ class _Screen2State extends State<Screen2> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         extendBodyBehindAppBar: true,
         appBar: AppBar(
