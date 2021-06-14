@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+FirebaseFirestore viewuserkhata = FirebaseFirestore.instance;
+FirebaseFirestore storedata = FirebaseFirestore.instance;
 
 class Customtextfield extends StatelessWidget {
   String hinttext;
@@ -40,4 +44,49 @@ class Userdetal {
   String email;
   String password;
   Userdetal({this.username, this.email, this.password});
+}
+
+class Userkhata {
+  String custname;
+  String prodname;
+  String quantity;
+  String date;
+  String phonenumber;
+  int rate;
+  String totalamount;
+  String creditamount;
+  String remark;
+  Userkhata(
+      {this.custname,
+      this.prodname,
+      this.quantity,
+      this.date,
+      this.phonenumber,
+      this.rate,
+      this.totalamount,
+      this.creditamount,
+      this.remark});
+}
+
+Future<List<Map<String, String>>> itemtobe() async {
+  List<Map<String, String>> itemstore = [];
+  await storedata.collection("khatabook").get().then((value) {
+    value.docs.forEach((element) {
+      itemstore.add({
+        'CustomerName': element['CreditorName'],
+        //'rate': element['Rate'],
+        'docid': element.id,
+        'Phone': element['Phone No'],
+        'date': element['Date'],
+        'camount': element['CreditAmount'],
+        'tamount': element['Total Amount'],
+        'product': element['Product'],
+        'quantity': element['Quantity'],
+        'reamrk': element['Remark'],
+      });
+    });
+  });
+
+  //print("${firedata.data.docs[i]['CreditorName']}");
+  return itemstore;
 }

@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 
 import 'modle/model.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
+FirebaseAuth auth = FirebaseAuth.instance;
+Userdetal userdetail = Userdetal();
 
 class Screen2 extends StatefulWidget {
   Screen2({Key key}) : super(key: key);
@@ -37,6 +42,7 @@ class _Screen2State extends State<Screen2> {
                     prefixicon: Icon(Icons.verified_user),
                     onchangevalue: (value) {
                       print(value);
+                      userdetail.username = value;
                     },
                   ),
                   Customtextfield(
@@ -45,6 +51,7 @@ class _Screen2State extends State<Screen2> {
                     prefixicon: Icon(Icons.email),
                     onchangevalue: (value) {
                       print(value);
+                      userdetail.email = value;
                     },
                   ),
                   Customtextfield(
@@ -54,6 +61,7 @@ class _Screen2State extends State<Screen2> {
                     suffixicon: Icon(Icons.visibility),
                     onchangevalue: (value) {
                       print(value);
+                      userdetail.password = value;
                     },
                   ),
                   Customtextfield(
@@ -63,11 +71,21 @@ class _Screen2State extends State<Screen2> {
                     suffixicon: Icon(Icons.visibility),
                     onchangevalue: (value) {
                       print(value);
+                      if (value != userdetail.password) {
+                        print("Error in password verification");
+                      }
                     },
                   ),
                   ElevatedButton(
-                      onPressed: () {
-                        print("Code for signup goes here");
+                      onPressed: () async {
+                        print("Executing code for signup goes here");
+                        try {
+                          await auth.createUserWithEmailAndPassword(
+                              email: userdetail.email,
+                              password: userdetail.password);
+                        } catch (e) {
+                          print("Error occured is $e");
+                        }
                       },
                       child: Text("SIGN UP")),
                 ],
